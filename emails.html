@@ -1,0 +1,57 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Emails</title>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<head>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <h2>Emails</h2>
+
+    <table id="dataTables">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Subject</th>
+        </tr>
+      </thead>
+      <tbody id="email">
+
+      </tbody>
+
+
+
+    </table>
+  </div>
+
+  <script src="js1/jquery/jquery-2.2.4.min.js"></script>
+  <script src="js1/bootstrap.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script>
+
+    // query emails from local storage  
+    var emails = JSON.parse(localStorage.getItem("contactsEmails"));
+
+    //  prep of data to be displayed 
+    emaildiv = document.getElementById("email");
+    for (let i = 0; i < emails.length; i++) {
+      html = '<tr><td>' + emails[i].email + '</td><td>' + emails[i].fullname + '</td><td>' + emails[i].subject + '</td></tr>';
+      emaildiv.innerHTML += html;
+    }
+    
+    // data table code 
+    $(document).ready(function () {
+      $("#dataTables").dataTable();
+    });
+  </script>
+</body>
+
+</html>
