@@ -1,0 +1,51 @@
+<html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>data table</title>
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <head>
+
+
+</head>
+<body>
+    <div class="container">
+        <h2>stock</h2>
+
+        <table id="dataTables">
+                <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>price</th>
+                <th>Category</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody id="product">
+
+            </tbody>
+
+        
+          
+        </table>
+    </div>
+
+    <script src="js1/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js1/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        var products =JSON.parse(localStorage.getItem("Products"));
+        prodiv= document.getElementById("product");
+      for (let i = 0; i < products.length; i++) {
+          html='<tr><td>'+products[i].name +'</td><td>'+products[i].price +'</td><td>'+products[i].category +'</td><td>'+products[i].count +'</td></tr>';
+            prodiv.innerHTML += html; 
+        }
+        $(document).ready(function(){
+          $("#dataTables").dataTable();
+        });
+    </script>
+</body>
+</html>
+
